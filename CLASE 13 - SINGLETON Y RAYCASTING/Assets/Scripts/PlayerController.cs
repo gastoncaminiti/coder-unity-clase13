@@ -15,10 +15,13 @@ public class PlayerController : MonoBehaviour
 
     private AudioSource audioPlayer;
     private Rigidbody rbPlayer;
-    
+
+    private static string playerName = "VAMPIRO X";
+
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(PlayerController.playerName);
         animPlayer.SetBool("isRun", false);
         audioPlayer = GetComponent<AudioSource>();
         rbPlayer    = GetComponent<Rigidbody>();

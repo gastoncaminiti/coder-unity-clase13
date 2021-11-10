@@ -47,14 +47,18 @@ public class ItemController : MonoBehaviour
             rbItem.AddForce(Vector3.up * 4f, ForceMode.Impulse);
         }
         //SE RECOMIENDA SWITCH 
-        if (collision.gameObject.CompareTag("PlayerHand"))
+        if (collision.contacts[0].otherCollider.gameObject.CompareTag("PlayerHand"))
         {
             //APLICAR FUERZA
             //rbItem.AddForce(Vector3.left * 100f);
             //rbItem.AddForce(Vector3.forward * forcePower);
-            rbItem.AddRelativeForce(Vector3.forward * forcePower, ForceMode.Acceleration);
-            rbItem.AddTorque(Vector3.forward * forcePower);
-
+            //rbItem.AddRelativeForce(Vector3.forward * forcePower, ForceMode.Acceleration);
+            //rbItem.AddTorque(Vector3.forward * forcePower);
+            GameManager.score += 1;
+            GameManager.instance.addScore();
+            Debug.Log(GameManager.GetScore());
+            Debug.Log(GameManager.score);
+            Destroy(gameObject);
         }
     }
 }
